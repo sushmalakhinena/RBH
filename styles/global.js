@@ -3,8 +3,14 @@ import {StyleSheet} from 'react-native';
 export const globalStyles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20
+        padding: 20,
     },
+    formcontainer: {
+            flex: 1,
+            padding: 20,
+            backgroundColor: '#fff',
+            marginTop: 10
+        },
     input: {
         borderWidth: 3,
         borderColor: '#ddd',
@@ -12,6 +18,15 @@ export const globalStyles = StyleSheet.create({
         fontSize: 18,
         borderRadius: 6
     },
+    inputform: {
+            borderWidth: 3,
+            borderColor: '#ddd',
+            padding: 20,
+            fontSize: 18,
+            borderRadius: 6,
+            marginLeft: 10,
+            marginRight: 15
+        },
     dropDown: {
         // backgroundColor: '#fafafa',
         borderWidth: 1,
@@ -29,6 +44,17 @@ export const globalStyles = StyleSheet.create({
         borderBottomColor: '#000000',
         marginBottom: 5,
         marginTop: 5
+    },
+    textform: {
+        padding: 10,
+        color: '#000000',
+        fontSize: 13,
+        borderWidth: 1,
+        borderBottomColor: '#000000',
+        marginBottom: 5,
+        marginTop: 5,
+        marginLeft: 10,
+        marginRight: 15
     },
     button: {
         color: 'blue',
@@ -89,4 +115,12 @@ export const globalStyles = StyleSheet.create({
         padding: 30,
         fontSize: 15,
     },
+    errormsgform: {
+            padding: 1,
+            color: 'crimson',
+            fontWeight: 'bold',
+            fontSize: 10,
+            marginLeft: 10,
+            marginRight: 15
+        },
 });
