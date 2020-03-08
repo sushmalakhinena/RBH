@@ -89,4 +89,14 @@ export const globalStyles = StyleSheet.create({
         padding: 30,
         fontSize: 15,
     },
+    scrollContainer: {
+        flex: 1,
+        padding: 5
+    },
+    segScrollView:{
+        height: 0
+    },
+    segView: {
+        height: 50
+    }
 });
