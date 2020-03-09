@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { createStackNavigator } from 'react-navigation-stack';
-import { createAppContainer } from 'react-navigation'
+import {createStackNavigator} from 'react-navigation-stack';
+import {createAppContainer} from 'react-navigation'
 
 import EducationScreen from '../screens/EducationScreen';
 import StatusScreen from '../screens/StatusScreen';
@@ -11,7 +11,8 @@ import ViewProfile from '../screens/ViewProfile';
 import GeneralInfoForm from '../components/GeneralInfoForm';
 import InfoGeneral from '../screens/InfoGeneral';
 import GeneralInfoStack from './GeneralInfoNavigation';
-import childResultScreen from '../screens/ChildResultScreen';
+import StatusNavigator from './StatusNavigator';
+
 
 
 // const Stack = createStackNavigator();
@@ -38,23 +39,20 @@ const screens = {
         screen: EducationScreen
     },
     Status: {
-        screen: StatusScreen
+        screen: StatusNavigator
     },
-    Health: {
+    Health:{
         screen: HealthScreen
     },
-    GeneralInfo: {
+    GeneralInfo:{
         screen: GeneralInfoStack
     },
-    Profile: {
+    Profile:{
         screen: ViewProfile
-    },
-    childresult: {
-        screen: childResultScreen,
     },
 };
 
 
-const HomeStack = createStackNavigator(screens, { headerMode: 'none' });
+const HomeStack = createStackNavigator(screens, {headerMode: 'none'});
 
 export default createAppContainer(HomeStack)
