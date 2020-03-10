@@ -118,15 +118,14 @@ export const globalStyles = StyleSheet.create({
         padding: 30,
         fontSize: 15,
     },
-    textarea: {
-        textAlignVertical: 'top',  // hack android
-        height: 150,
-        fontSize: 14,
-        color: '#333',
-        borderWidth: 3,
-        borderColor: '#ddd',
-        padding: 20,
-        fontSize: 18,
-        borderRadius: 6
+    scrollContainer: {
+        flex: 1,
+        padding: 5
     },
+    segScrollView:{
+        height: 0
+    },
+    segView: {
+        height: 50
+    }
 });
