@@ -5,12 +5,14 @@ import StatusScreen from '../screens/StatusScreen';
 
 const screens = {
     ChildStatus: {
-        screen: StatusScreen
+        screen: StatusScreen,
+        
     }
 }
 
 const StatusStack = createStackNavigator(screens, {
     defaultNavigationOptions: {
+      
         headerStyle: {
             height: 50,         
         },

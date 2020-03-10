@@ -7,16 +7,14 @@ import { globalStyles } from "../styles/global";
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
 import moment from 'moment';
+import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
+import { Card, CardImage, CardContent } from 'react-native-cards';
+import Textarea from 'react-native-textarea';
 
 const statusSchema = yup.object({
     childStatus: yup.string().required(),
     date: yup.string().required(),
     approvedBy: yup.string().required(),
-    //    leavingReason: yup.string().required(),
-    //    leftPlace: yup.string().required(),
-    //    actionTaken: yup.string().required(),
-    //    stay: yup.string().required(),
-    //    followUpBy: yup.string().required()
 });
 
 export default class StatusScreen extends React.Component {
@@ -31,9 +29,21 @@ export default class StatusScreen extends React.Component {
             leftPlaceError: false,
             actionTakenError: false,
             stayError: false,
-            followUpByError: false
+            followUpByError: false,
+            child: this.props.navigation.getParam('child')
         }
         this.pickDob = this.pickDob.bind(this);
+         radio_props = [
+             {
+                 label: 'Child Exits',
+                 value: 'exit'
+             },
+             {
+                 label: 'Child Moves To Future Program',
+                 value: 'futureProgram'
+             }
+        ];
+        
     }
 
     pickDob = (event, date, handleChange) => {
@@ -47,13 +57,18 @@ export default class StatusScreen extends React.Component {
 
     showDatepicker = () => {
         this.setState({ show: true });
+
     };
 
-    render() {
-        return (
-          /*  <Header centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}></Header>*/
-            <View style={globalStyles.container}>
 
+    render() {
+
+        return (
+            <View style={globalStyles.container}>
+                <View >
+                     
+                    <Text> Child Id: {this.state.child.id}</Text>
+                </View>  
                 <Formik
                     initialValues={{
                         childStatus: '',
@@ -64,11 +79,12 @@ export default class StatusScreen extends React.Component {
                         leftPlace: '',
                         actionTaken: '',
                         stay: '',
-                        followUpBy: ''
+                        followUpBy: '',
+                        credentials: ''
                     }}
                     validationSchema={statusSchema}
                     onSubmit={(values, actions) => {
-                    console.log(values);
+                        console.log(values.leavingReason);
                         if (values.leavingReason == '' && this.state.showElements == true) {
                             this.setState({ leavingReasonError: true });
                         } if (values.reasonDescription == '' && this.state.showElements == true) {
@@ -81,9 +97,11 @@ export default class StatusScreen extends React.Component {
                             this.setState({ stayError: true });
                         } if (values.followUpBy == '' && this.state.showElements == true) {
                             this.setState({ followUpByError: true });
-                        } else {
+                        }
+                        else {
+                            console.log(values);
                             actions.resetForm();
-                            this.setState({ date: null, showElements: false, leavingReasonError: false, reasonDescriptionError: false, leftPlaceError: false, actionTakenError: false, stayError: false, followUpByError: false });
+                            this.setState({ date: null, showElements: false, leavingReasonError: false, reasonDescriptionError: false, leftPlaceError: false, actionTakenError: false, stayError: false, followUpByError: false, credentialsError: false });
                             alert("Data submitted Successfully");
                         }
                     }}
@@ -96,6 +114,7 @@ export default class StatusScreen extends React.Component {
 
                             <ScrollView>
                                 <View>
+                                   
                                     <Text style={globalStyles.text}>Child Status:</Text>
                                     <Picker
                                         selectedValue={props.values.childStatus}
@@ -117,12 +136,13 @@ export default class StatusScreen extends React.Component {
                                         <Picker.Item label="Absent" value="absent" />
                                         <Picker.Item label="Closed" value="closed" />
                                     </Picker>
-                                    <Text style={globalStyles.errormsg}>{props.touched.childStatus && props.errors.childStatus}</Text>
-                                    <Text style={globalStyles.text}>Date:</Text>
+                                        <Text style={globalStyles.errormsg}>{props.touched.childStatus && props.errors.childStatus}</Text>
+                                    
+                                        <Text style={globalStyles.text}>Date:</Text>
                                     <View style={globalStyles.dateView}>
                                         <TextInput
                                             style={globalStyles.inputText}
-
+                                         
                                             value={this.state.date}
                                             editable={false}
                                             onValueChange={props.handleChange('date')}
@@ -181,10 +201,16 @@ export default class StatusScreen extends React.Component {
                                             { this.state.leavingReasonError ? < Text style={globalStyles.errormsg}> Leaving Reason cannot be empty</Text> : null}
 
                                             <Text style={globalStyles.text}>Reason Description:</Text>
+                                           
                                             <TextInput
+                                                
                                                 style={globalStyles.input}
                                                 onChangeText={(reasonDescription) => { this.setState({ reasonDescriptionError: false }); props.setFieldValue('reasonDescription', reasonDescription) }}
-                                                value={props.values.reasonDescription} //value updated in 'values' is reflected here
+                                                //   defaultValue={this.state.text}
+                                                multiline={true}
+                                                numberOfLines={6}
+                                                placeholder={'Enter Reason Description'}
+                                                
                                             />
                                             {this.state.reasonDescriptionError ? < Text style={globalStyles.errormsg}>Reason Description is required</Text> : null}
                                             <Text style={globalStyles.text}>Child Left Place:</Text>
@@ -237,15 +263,31 @@ export default class StatusScreen extends React.Component {
                                                 <Picker.Item label="Swapna" value="Swapna" />
                                                 <Picker.Item label="Raju" value="Raju" />
                                             </Picker>
-                                            {this.state.followUpByError ? < Text style={globalStyles.errormsg}>FollowUpBy is required</Text> : null}
+                                            {this.state.followUpByError ? < Text style={globalStyles.errormsg}>FollowUpBy is required:</Text> : null}
+
+                                            <Text style={globalStyles.text}>Create User Credentials: </Text>
+                                            <RadioForm
+                                                style={{marginLeft: 10}}
+                                                radio_props={radio_props}
+                                                initial={-1}
+                                                buttonSize={10}
+                                                buttonOuterSize={20}
+                                                buttonColor={'black'}
+                                                buttonInnerColor={'black'}
+                                                selectedButtonColor={'black'}
+                                                onPress={(value) => { props.setFieldValue('credentials',value) }}
+                                            />
+                                            
                                         </View>
                                         : null}
                                     <Button style={globalStyles.button} title="Submit" onPress={props.handleSubmit} />
+                                    
                                 </View>
                             </ScrollView>
                         </KeyboardAvoidingView>
                     )}
                 </Formik>
+               
             </View>
         );
     }

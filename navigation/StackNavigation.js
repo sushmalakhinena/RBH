@@ -12,6 +12,8 @@ import GeneralInfoForm from '../components/GeneralInfoForm';
 import InfoGeneral from '../screens/InfoGeneral';
 import GeneralInfoStack from './GeneralInfoNavigation';
 import StatusNavigator from './StatusNavigator';
+import FollowUpScreen from '../screens/FollowUpScreen';
+import FollowUpNavigation from './FollowUpNavigation';
 
 
 
@@ -50,6 +52,9 @@ const screens = {
     Profile:{
         screen: ViewProfile
     },
+    FollowUp: {
+        screen: FollowUpNavigation
+    }
 };
 
 
