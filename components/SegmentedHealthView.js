@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import ChildMedicalTreatment from './ChildMedicalTreatment';
 import ChildGrowthForm from './ChildGrowthForm';
 import ChildHealthCheckList from './ChildHealthCheckList';
-import SegmentedControlTab from 'react-native-segmented-control-tab';
 import {globalStyles} from '../styles/global';
 import {
   StyleSheet,
