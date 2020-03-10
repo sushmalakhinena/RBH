@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 //import Dialog, { DialogContent } from 'react-native-popup-dialog';
-//import { Button } from 'react-native';
-import {  View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
+import { Image, Button } from 'react-native';
+import {  Alert, View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
+//import childpic from 'child.jpeg'; 
 import HomeScreen from './HomeScreen';
 
 export default class ViewProfile extends Component {
@@ -13,9 +14,20 @@ state = { description: '' }
    addDetails = (text) => {
       alert("Details added successfully")
    }
+
+   
+   _simpleAlertHandler=()=>{
+      //function to make simple alert
+      alert('Update Profile Description!');
+    }
+
    render(){
        return(
           <View style = {styles.container}>
+             <Image
+               style={{marginLeft: 160, width: 70, height: 70, alignItems:'center', justifyContent:'center'}}
+               source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
+             />
              <TextInput style = {styles.input}
              underlineColorAndroid = "transparent"
              placeholder = "Add Child description briefly"
@@ -29,6 +41,9 @@ state = { description: '' }
                 }>
                 <Text style = {styles.submitButtonText}> Submit </Text>
              </TouchableOpacity>
+
+             <Button style={{flex:1,alignItems:'right', justifyContent:'right'}}
+              title='Simple Alert' onPress={this._simpleAlertHandler}/> 
           </View>
 
          //  <View style={styles.container}>
