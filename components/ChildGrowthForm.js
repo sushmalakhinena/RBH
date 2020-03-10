@@ -14,42 +14,28 @@ const ChildGrowthSchema = yup.object({
     Height: yup.number().required(),
     Weight: yup.number().required(),
     GeneralHealth: yup.string().required(),
-    Comments: yup.string(),
-    CreatedDate: yup.string().required(),
-    ModifiedDate: yup.string().required()
+    Comments: yup.string()
 })
 
+var date = new Date().getDate(); //Current Date
+var month = new Date().getMonth() + 1; //Current Month
+var year = new Date().getFullYear(); //Current Year
 
 export default class ChildGrowth extends React.Component{
 constructor(){
 super()
 this.state ={
 AssessmentOn:'',
-CreatedOn: '',
-ModifiedOn: '',
-showAD: false,
-showCD: false,
-showMD: false
+showAD: false
 }
 }
-
-showCreatedDatePicker = () => {
-    this.setState({
-      showCD: true
-    });
-  };
-
-showModifiedDatePicker = () => {
-    this.setState({
-      showMD: true
-    });
-  };
 
 showAssessmentDatePicker = () => {
     this.setState({
       showAD: true
     });
   };
+
 _pickAssessmentDate = (event, date, handleChange) => {
         console.log(date);
         let a = moment(date).format('DD/MM/YYYY');
@@ -57,28 +43,6 @@ _pickAssessmentDate = (event, date, handleChange) => {
         console.log(typeof (a));
         this.setState({
             AssessmentOn: a, showAD: false
-        });
-        handleChange(a);
-    }
-
-_pickCreatedDate = (event, date, handleChange) => {
-        console.log(date);
-        let a = moment(date).format('DD/MM/YYYY');
-        console.log(a);
-        console.log(typeof (a));
-        this.setState({
-            CreatedOn: a, showCD: false
-        });
-        handleChange(a);
-    }
-
-_pickModifiedDate = (event, date, handleChange) => {
-        console.log(date);
-        let a = moment(date).format('DD/MM/YYYY');
-        console.log(a);
-        console.log(typeof (a));
-        this.setState({
-            ModifiedOn: a, showMD: false
         });
         handleChange(a);
     }
@@ -97,8 +61,10 @@ _pickModifiedDate = (event, date, handleChange) => {
                         Weight: '',
                         GeneralHealth: '',
                         Comments: '',
-                        CreatedDate: this.state.CreatedOn,
-                        ModifiedDate: this.state.ModifiedOn,
+                        CreatedBy: 'admin',
+                        ModifiedBy: 'admin',
+                        CreatedDate: date + '/' + month + '/' + year,
+                        ModifiedDate: date + '/' + month + '/' + year,
                         HealthStatus: '1'
                     }
                 }
@@ -107,9 +73,7 @@ _pickModifiedDate = (event, date, handleChange) => {
                     actions.resetForm();
                     console.log(values);
                     this.setState({
-                    AssessmentOn:'',
-                    CreatedOn: '',
-                    ModifiedOn: ''
+                    AssessmentOn:''
                     });
                     alert("Data Has been submitted")
 
@@ -171,52 +135,6 @@ _pickModifiedDate = (event, date, handleChange) => {
                     <Text style={globalStyles.errormsgform}>
                     {props.touched.Comments && props.errors.Comments}
                     </Text>
-               <Text style = {globalStyles.textform}>CreatedDate</Text>
-                <View style={Styles.dobView}>
-                                                     <TextInput
-                                                      style={globalStyles.inputform, Styles.dobValue}
-                                                      value={this.state.CreatedOn}
-                                                      onValueChange={props.handleChange('CreatedDate')}
-                                                      />
-                                                     <TouchableHighlight onPress={this.showCreatedDatePicker}>
-                                                       <View>
-                                                       <Feather style={Styles.dobBtn} name="calendar" />
-                                                       </View>
-                                                       </TouchableHighlight>
-                                                       <Text style={globalStyles.errormsgform}>{props.touched.CreatedDate && props.errors.CreatedDate}</Text>
-                                                                                        {this.state.showCD &&
-                                                                                            <DateTimePicker
-                                                                                                style={{ width: 100 }}
-                                                                                                mode="date" //The enum of date, datetime and time
-                                                                                                value={new Date()}
-                                                                                                mode={'date'}
-                                                                                                onChange={(e, date) => this._pickCreatedDate(e, date, props.handleChange('CreatedDate'))}
-                                                                                            />
-                                                                                        }
-                 </View>
-               <Text style = {globalStyles.textform}>ModifiedOn</Text>
-                        <View style={Styles.dobView}>
-                                                                 <TextInput
-                                                                  style={globalStyles.inputform, Styles.dobValue}
-                                                                  value={this.state.ModifiedOn}
-                                                                  onValueChange={props.handleChange('ModifiedDate')}
-                                                                  />
-                                                                 <TouchableHighlight onPress={this.showModifiedDatePicker}>
-                                                                   <View>
-                                                                   <Feather style={Styles.dobBtn} name="calendar" />
-                                                                   </View>
-                                                                   </TouchableHighlight>
-                                                                   <Text style={globalStyles.errormsgform}>{props.touched.ModifiedDate && props.errors.ModifiedDate}</Text>
-                                                                                                    {this.state.showMD &&
-                                                                                                        <DateTimePicker
-                                                                                                            style={{ width: 100 }}
-                                                                                                            mode="date" //The enum of date, datetime and time
-                                                                                                            value={new Date()}
-                                                                                                            mode={'date'}
-                                                                                                            onChange={(e, date) => this._pickModifiedDate(e, date, props.handleChange('ModifiedDate'))}
-                                                                                                        />
-                                                                                                    }
-                             </View>
 
                <Text style = {globalStyles.textform}>HealthStatus</Text>
                      <TextInput  style={globalStyles.inputform} value = {props.values.HealthStatus}  onBlur={props.handleBlur("HealthStatus")}></TextInput>
@@ -226,7 +144,6 @@ _pickModifiedDate = (event, date, handleChange) => {
                <Button  title="Submit" onPress={props.handleSubmit} />
                </View>
                </ScrollView>
-//               </KeyboardAvoidingView>
               )
    }
     </Formik>

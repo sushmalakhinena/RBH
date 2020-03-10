@@ -25,7 +25,7 @@ export const globalStyles = StyleSheet.create({
             fontSize: 18,
             borderRadius: 6,
             marginLeft: 10,
-            marginRight: 15
+            marginRight: 15,
         },
     inputText: {
         borderWidth: 1,
@@ -77,13 +77,12 @@ export const globalStyles = StyleSheet.create({
     textform: {
         padding: 10,
         color: '#000000',
-        fontSize: 13,
-        borderWidth: 1,
+        fontSize: 16,
         borderBottomColor: '#000000',
         marginBottom: 5,
         marginTop: 5,
-        marginLeft: 10,
-        marginRight: 15
+        marginRight: 15,
+        fontWeight: 'bold',
     },
     button: {
         color: 'blue',

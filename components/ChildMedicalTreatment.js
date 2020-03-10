@@ -182,7 +182,7 @@ showVisitedDatepicker = () => {
                                         {props.touched.Remarks && props.errors.Remarks}
                                         </Text>
 
-               <Button style = {globalStyles.button} title="Submit" onPress={props.handleSubmit} />
+               <Button title="Submit" onPress={props.handleSubmit} />
                </View>
                </ScrollView>
               )

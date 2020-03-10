@@ -35,26 +35,26 @@ constructor() {
                     style = {{height:10}}
                   >
                     <View>
-                      <TouchableOpacity onPress = {() => this.setState({customStyleIndex: 0})}>
+                      <TouchableOpacity style = {{borderBottomWidth: this.state.customStyleIndex == 0 ? 3 : 0 ,borderBottomColor: this.state.customStyleIndex == 0 ? 'grey' : '#f0f0f0'}} onPress = {() => this.setState({customStyleIndex: 0})}>
                         <Text style = {{fontSize:20, paddingLeft: 10, paddingRight: 20, paddingTop:20}}>ChildGrowthForm</Text>
                       </TouchableOpacity>
                     </View>
                     <View>
-                      <TouchableOpacity onPress = {() => this.setState({customStyleIndex: 1})}>
+                      <TouchableOpacity style = {{borderBottomWidth: this.state.customStyleIndex == 1 ? 3 : 0 ,borderBottomColor: this.state.customStyleIndex == 1 ? 'grey' : '#f0f0f0'}} onPress = {() => this.setState({customStyleIndex: 1})}>
                         <Text style = {{fontSize:20, paddingLeft: 10, paddingRight: 20, paddingTop:20}}>ChildMedicalTreatment</Text>
                       </TouchableOpacity>
                     </View>
                     <View>
-                       <TouchableOpacity onPress = {() => this.setState({customStyleIndex: 2})}>
+                       <TouchableOpacity style = {{borderBottomWidth: this.state.customStyleIndex == 2 ? 3 : 0 ,borderBottomColor: this.state.customStyleIndex == 2 ? 'grey' : '#f0f0f0'}} onPress = {() => this.setState({customStyleIndex: 2})}>
                          <Text style = {{fontSize:20, paddingLeft: 10, paddingRight: 20, paddingTop:20}}>ChildHealthCheckList</Text>
                        </TouchableOpacity>
                     </View>
-         </ScrollView>
-         </View>
-              {customStyleIndex === 0 && <ChildGrowthForm/>}
-              {customStyleIndex === 1 && <ChildMedicalTreatment/>}
-              {customStyleIndex === 2 && <ChildHealthCheckList/>}
-        </View>
+                  </ScrollView>
+                  </View>
+                    {customStyleIndex === 0 && <ChildGrowthForm/>}
+                    {customStyleIndex === 1 && <ChildMedicalTreatment/>}
+                    {customStyleIndex === 2 && <ChildHealthCheckList/>}
+                </View>
        );
      }
    }
