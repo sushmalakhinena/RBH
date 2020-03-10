@@ -30,22 +30,22 @@ export default class GeneralInfoSegControl extends Component {
             style = {globalStyles.segScrollView}
           >
             <View>
-              <TouchableOpacity onPress = {() => this.setState({formIndex : 0})}>
+              <TouchableOpacity style = {{borderBottomWidth: this.state.formIndex == 0 ? 3 : 0 ,borderBottomColor: this.state.formIndex == 0 ? 'grey' : '#f0f0f0'}} onPress = {() => this.setState({formIndex : 0})}>
                 <Text style = {{paddingLeft: 10, paddingRight: 20, paddingTop:10}}>GeneralInfo</Text>
               </TouchableOpacity>
             </View>
             <View>
-              <TouchableOpacity onPress = {() => this.setState({formIndex : 1})}>
+              <TouchableOpacity style = {{borderBottomWidth: this.state.formIndex == 1 ? 3 : 0 ,borderBottomColor: this.state.formIndex == 1 ? 'grey' : '#f0f0f0'}} onPress = {() => this.setState({formIndex : 1})}>
                 <Text style = {{paddingLeft: 10, paddingRight: 20, paddingTop:10}}>PrevEdu</Text>
               </TouchableOpacity>
             </View>
             <View>
-              <TouchableOpacity onPress = {() => this.setState({formIndex : 2})}>
+              <TouchableOpacity style = {{borderBottomWidth: this.state.formIndex == 2 ? 3 : 0 ,borderBottomColor: this.state.formIndex == 2 ? 'grey' : '#f0f0f0'}} onPress = {() => this.setState({formIndex : 2})}>
                 <Text style = {{paddingLeft: 10, paddingRight: 20, paddingTop:10}}>Health during addmission</Text>
               </TouchableOpacity>
             </View>
             <View>
-              <TouchableOpacity onPress = {() => this.setState({formIndex : 3})}>
+              <TouchableOpacity style = {{borderBottomWidth: this.state.formIndex == 3 ? 3 : 0 ,borderBottomColor: this.state.formIndex == 3 ? 'grey' : '#f0f0f0'}} onPress = {() => this.setState({formIndex : 3})}>
                 <Text style = {{paddingLeft: 10, paddingRight: 20, paddingTop:10}}>Child Addmission</Text>
               </TouchableOpacity>
             </View>

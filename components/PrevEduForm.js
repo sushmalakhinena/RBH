@@ -54,14 +54,14 @@ export default class PrevEduForm extends React.Component{
                                         <Text style = {globalStyles.text}>Drop Out Reason</Text>
                                         <Text style = {globalStyles.errormsg}>{ props.touched.dropOutReason && props.errors.dropOutReason }</Text>
                                         <TextInput
-                                        style = {globalStyles.input}
+                                        style = {globalStyles.inputText}
                                         onChangeText = {props.handleChange('dropOutReason')}
                                         value = {props.values.dropOutReason}
                                         />
                                         <Text style = {globalStyles.text}>Year Of Studied</Text>
                                         <Text style = {globalStyles.errormsg}>{ props.touched.yearOfStudied && props.errors.yearOfStudied }</Text>
                                         <TextInput
-                                        style = {globalStyles.input}
+                                        style = {globalStyles.inputText}
                                         onChangeText = {props.handleChange('yearOfStudied')}
                                         value = {props.values.yearOfStudied}
                                         />
@@ -80,7 +80,7 @@ export default class PrevEduForm extends React.Component{
                                         <Text style = {globalStyles.text}>School Name</Text>
                                         <Text style = {globalStyles.errormsg}>{ props.touched.schoolName && props.errors.schoolName }</Text>
                                         <TextInput
-                                        style = {globalStyles.input}
+                                        style = {globalStyles.inputText}
                                         onChangeText = {props.handleChange('schoolName')}
                                         value = {props.values.schoolName}
                                         />
@@ -111,7 +111,7 @@ export default class PrevEduForm extends React.Component{
                                         <Text style = {globalStyles.text}>School Place</Text>
                                         <Text style = {globalStyles.errormsg}>{ props.touched.schoolPlace && props.errors.schoolPlace }</Text>
                                         <TextInput
-                                        style = {globalStyles.input}
+                                        style = {globalStyles.inputText}
                                         onChangeText = {props.handleChange('schoolPlace')}
                                         value = {props.values.schoolPlace}
                                         />
