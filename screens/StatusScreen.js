@@ -8,8 +8,7 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
 import moment from 'moment';
 import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
-import { Card, CardImage, CardContent } from 'react-native-cards';
-import Textarea from 'react-native-textarea';
+
 
 const statusSchema = yup.object({
     childStatus: yup.string().required(),
@@ -277,11 +276,10 @@ export default class StatusScreen extends React.Component {
                                                 selectedButtonColor={'black'}
                                                 onPress={(value) => { props.setFieldValue('credentials',value) }}
                                             />
-                                            
+                                         
                                         </View>
                                         : null}
-                                    <Button style={globalStyles.button} title="Submit" onPress={props.handleSubmit} />
-                                    
+                                    <Button style={globalStyles.button} title="Submit" onPress={props.handleSubmit} />                                    
                                 </View>
                             </ScrollView>
                         </KeyboardAvoidingView>
