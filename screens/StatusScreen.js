@@ -97,7 +97,7 @@ export default class StatusScreen extends React.Component {
                         } if (values.followUpBy == '' && this.state.showElements == true) {
                             this.setState({ followUpByError: true });
                         }
-                        else {
+                        if (!(this.state.leavingReasonError || this.state.reasonDescriptionError || this.state.leftPlaceError || this.state.actionTakenError || this.state.stayError || this.state.followUpByError)) {
                             console.log(values);
                             actions.resetForm();
                             this.setState({ date: null, showElements: false, leavingReasonError: false, reasonDescriptionError: false, leftPlaceError: false, actionTakenError: false, stayError: false, followUpByError: false, credentialsError: false });
