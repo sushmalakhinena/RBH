@@ -1,23 +1,23 @@
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation'
 import { React } from 'react';
-import StatusScreen from '../screens/StatusScreen';
+import FollowUpScreen from '../screens/FollowUpScreen';
 
 const screens = {
-    ChildStatus: {
-        screen: StatusScreen,
-        
+    FollowUpBy: {
+        screen: FollowUpScreen,
+
     }
 }
 
-const StatusStack = createStackNavigator(screens, {
+const FollowUpStack = createStackNavigator(screens, {
     defaultNavigationOptions: {
-      
+
         headerStyle: {
-            height: 50,         
+            height: 50,
         },
         safeAreaInsets: { top: 0 }
     }
 })
 
-export default createAppContainer(StatusStack)
+export default createAppContainer(FollowUpStack)
